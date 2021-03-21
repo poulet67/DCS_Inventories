@@ -1,0 +1,17 @@
+[
+	{
+		"Cash": 100000000,
+		"Interest": 0,
+		"CashTickRate": 60,
+		"CardTickRate": 30,
+		"Costs":{
+			"Weapons":{
+			},
+			"Airframes":{
+			},
+			"Ground Units":{
+			}
+		}
+		
+	}
+]
