@@ -1,0 +1,27 @@
+[
+	{
+	"UnitAttachedto": "RESUPPLY_C130_NORTH_1",
+	"Delay": 16200
+	"Cargo":{
+	  "Weapons": [ {
+		"authorized": true,
+		"displayName": "AIM-120B",
+		"hidden": false,
+		"quantity": 10
+	  }, {
+		"authorized": true,
+		"displayName": "AIM-7MH",
+		"hidden": false,
+		"quantity": 6
+	  }, {
+		"authorized": true,
+		"displayName": "AIM-9L",
+		"hidden": false,
+		"quantity": 20
+	  } ],
+		"GroundUnits":[],
+		"Fuel":0,
+		"PilotLives":20
+	}
+	}
+]
