@@ -31,7 +31,14 @@ templates = Jinja2Templates(directory="templates")
 async def index():   
     return FileResponse("./static/index.html")
 
+@app.get("/_offmap_inv")
+async def get_inventory():   
+    return JSONResponse("./data/inventories_init_JSON.JSON")
 
-    
+@app.post("/_Dispatch_")
+async def dispatch():   
+#do some stuff
+    return 0
+   
 if __name__ == '__main__':
     uvicorn.run(app, port=8000)

@@ -1,3 +1,2 @@
-$.get("/_GET_Inventory")
-$.post("/_Dispatch_")
-
+$.get("/_offmap_inv")
+$.post("/_dispatch_")
