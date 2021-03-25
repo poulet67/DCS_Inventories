@@ -642,11 +642,11 @@ function print_to_JSON()
 	
 end
 
-function check_for_deliveries()
+function check_for_deliveries() --TBC
 
     trigger.action.outText("Checking for deliveries", 30)	
 	
- 	file = io.open("C:\Users\ian\OneDrive\Desktop\DCS stuff\SOI\inventories\Apache24\htdocs\deliveries.JSON", "w+")
+ 	file = io.open("", "w+") 
 	file:write(JSON:encode_pretty(inventories))
 	file:close()  
 

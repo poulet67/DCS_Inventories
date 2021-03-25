@@ -1,4 +1,4 @@
-JSON = require("C:\Users\ian\OneDrive\Desktop\DCS stuff\My Missions\getAirbases\JSON.lua")  -- one-time load of the routines
+JSON = require("")  -- <<--- Put full path to JSON.lua here
 
 --local pretty_json_text = JSON:encode_pretty(lua_table_or_value) -- 
 --"pretty printed" version
@@ -65,7 +65,7 @@ Categories: ScriptingFunctionsSingleton Functions
 
 	local JSON_Out = JSON:encode_pretty(myBaseTbl)
 	
-	file = io.open("C:\Users\ian\OneDrive\Desktop\DCS stuff\My Missions\getAirbases\JSON_Out\JSON_out.dat", "w+")
+	file = io.open("", "w+") --PUT FILE PATH HERE
 	file.write(JSON_Out)
 	file:close()
 

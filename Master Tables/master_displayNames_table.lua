@@ -190,6 +190,6 @@ master_displayNames_table = {
   "Sea Eagle",
   "UG_90MM",
   "Vikhr M",
-  "Werfer-Granate 21"
+  "Werfer-Granate 21",
   "Zuni-127"
 }
