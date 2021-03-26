@@ -35,17 +35,17 @@ os.chdir(sys.path[0])
 async def index():   
     return FileResponse("./static/index.html")
 
-@app.get("/bootstrap.js")
-async def index():   
-    return FileResponse("./static/js/bootstrap.js")
+#@app.get("/bootstrap.js")
+#async def index():   
+#    return FileResponse("./static/js/bootstrap.js")
 
 @app.get("/outside_inventory")
 async def index():   
     return JSONResponse("./data/inventories_init_JSON.json")
 
-@app.get("/bootstrap.css")
-async def index():   
-    return FileResponse("./static/css/bootstrap.css")
+#@app.get("/bootstrap.css")
+#async def index():   
+#    return FileResponse("./static/css/bootstrap.css")
 
 @app.get("/main.js")
 async def get_inventory():   
