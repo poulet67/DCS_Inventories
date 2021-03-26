@@ -17,23 +17,39 @@
 #
 #
 
+import os
+import sys
 import uvicorn
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+#from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+#dirname = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__))))
+#templates = Jinja2Templates(directory="templates")
 
-templates = Jinja2Templates(directory="templates")
+os.chdir(sys.path[0])
 
 @app.get("/")
 async def index():   
     return FileResponse("./static/index.html")
 
-@app.get("/_offmap_inv")
+@app.get("/bootstrap.js")
+async def index():   
+    return FileResponse("./static/js/bootstrap.js")
+
+@app.get("/outside_inventory")
+async def index():   
+    return JSONResponse("./data/inventories_init_JSON.json")
+
+@app.get("/bootstrap.css")
+async def index():   
+    return FileResponse("./static/css/bootstrap.css")
+
+@app.get("/main.js")
 async def get_inventory():   
-    return JSONResponse("./data/inventories_init_JSON.JSON")
+    return FileResponse("./static/js/main.js")
 
 @app.post("/_Dispatch_")
 async def dispatch():   

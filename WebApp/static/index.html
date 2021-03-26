@@ -10,8 +10,9 @@
         <title>Logistics Manager</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/bootstrap.css">
-        <script src="static/js/bootstrap.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/bootstrap.css">
+        <script src="/bootstrap.js" type="text/javascript"></script>
+        <script src="/main.js" type="text/javascript"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -42,24 +43,28 @@
         </ul>
         </div>  
     </nav>
-    <div class="container">
+    <div class="container" id="Window1">
         <h2>Dropdowns</h2>
         <p>The .dropdown class is used to indicate a dropdown menu.</p>
         <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
-        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>                                          
+        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>    
+        <p><a href="javascript:displayInventories();">Work Damnit</a></p>                                          
         <div class="dropdown">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Dropdown button
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Link 1</a>
+            <a class="dropdown-item" href="/main.js">Aircraft #1</a>
             <a class="dropdown-item" href="#">Link 2</a>
             <a class="dropdown-item" href="#">Link 3</a>
           </div>
         </div>
       </div>
-
-
-        <script src="" async defer></script>
+      <div class="container" id="Window2">
+        <h2>Inventory at :</h2>
+        <p>Lorem impsum</p>
+        <p>Text</p>                                        
+        </div>
+      </div>
     </body>
 </html>
