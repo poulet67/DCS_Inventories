@@ -1,6 +1,6 @@
 -- Guess this is pointless at the moment because there is no way to get the weight of an aircraft
 
-aircraft_name_table = {
+Aircraft_name_table = {
 "A10C" = 24967,
 "AJS" = 23697,
 "AV8B" = 14804,
@@ -10,7 +10,7 @@ aircraft_name_table = {
 
 }
 
-empty_weight_Table = {
+Empty_weight_Table = {
 
 
 
@@ -20,7 +20,7 @@ empty_weight_Table = {
 
 }
 
-gun_ammo_weight = {
+Gun_ammo_weight = {
 
 
 

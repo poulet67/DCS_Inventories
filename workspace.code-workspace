@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\..\\Documents\\GitHub\\blender"
+		},
+		{
+			"name": "DCS_Inventories",
+			"path": "."
+		}
+	],
+	"settings": {
+		"Lua.diagnostics.globals": [
+			"empty_weight_table"
+		]
+	}
+}
