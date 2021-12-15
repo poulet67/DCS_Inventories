@@ -41,7 +41,7 @@ function onTakeoffEvent(event)
 			Inventory_Checkout(event.initiator, departingAirbase)
 		
 		else	
-		
+			--DCS DEBUG
 			trigger.action.outText("Temporal anomaly detected! You will phase into nullspace in "..explode_delay.." seconds", 30)	
 			timer.scheduleFunction(explode_player, event.initiator, timer.getTime() + explode_delay) -- seconds mission time required
 
@@ -56,7 +56,7 @@ end
 function onLandingEvent(event)
   
 	if event.id == world.event.S_EVENT_LAND then
-	
+		--DCS DEBUG
 		trigger.action.outText("Landing ------------- Inventory Transfer:", 30)
 		trigger.action.outText(event.initiator:getName(), 30)
 		arrivingAirbase = event.place:getName()
@@ -70,7 +70,7 @@ function onLandingEvent(event)
 		for k, v in pairs(deliveries) do
 		
 			if(deliveries[k].UnitAttachedto == event.initiator:getName()) then
-			
+				--DCS DEBUG
 				trigger.action.outText("Delivery Detected!", 30)				
 				Delivery_Handoff(arrivingAirbase, event.initiator:getName())
 				deliveries[k] = nil --clear this entry from the table
@@ -124,7 +124,8 @@ function Delivery_Handoff(arrivingAirbase, UnitAttachedto)
 			
 		if(deliveries[k].UnitAttachedto == UnitAttachedto) then
 		
-				PilotsDelivered = deliveries[k].Cargo.PilotLives				
+				PilotsDelivered = deliveries[k].Cargo.PilotLives	
+				--DCS DEBUG			
 				trigger.action.outText("PilotLives"..PilotsDelivered, 30)				
 				FuelDelivered = deliveries[k].Cargo.Fuel				
 				WeaponsDelivered = deliveries[k].Cargo.Weapons
@@ -149,7 +150,7 @@ function Delivery_Handoff(arrivingAirbase, UnitAttachedto)
 end
 			
 function Inventory_Manual_Check_Loadout(playerUnit)
-
+	--DCS DEBUG
 	trigger.action.outText("INVENTORY CHECK:", 30)
 	
 	currentAirbase = getCurrentAirbase(playerUnit:getPoint().x,playerUnit:getPoint().y,playerUnit:getPoint().z)
@@ -157,11 +158,11 @@ function Inventory_Manual_Check_Loadout(playerUnit)
 	local valid = Inventory_Check(playerUnit, currentAirbase)
 	
 	if(valid) then
-		
+		--DCS DEBUG
 		trigger.action.outText("Your loadout is approved, you may proceed.", 30)	
 		
 	elseif(not(valid)) then
-		
+		--DCS DEBUG
 		trigger.action.outText("You currently in an airframe or have weapons equipped that do not exist at this airbase. This temporal paradox will cause you to implode upon takeoff. Please change your loadout if you wish to remain in this dimension.", 30)	
 		
 	end
@@ -169,7 +170,7 @@ function Inventory_Manual_Check_Loadout(playerUnit)
 end
 
 function Inventory_Checkout(playerUnit, currentAirbase)
-
+-	-DCS DEBUG
 	trigger.action.outText("INVENTORY CHECKOUT REPORT:", 30)
 	
 	descTable = playerUnit:getDesc()
@@ -187,9 +188,11 @@ function Inventory_Checkout(playerUnit, currentAirbase)
 		--PilotLives
 		
 			inventories[k].PilotLives = inventories[k].PilotLives - 1 -- Ways this can break: Multicrew
+			--DCS DEBUG
 			trigger.action.outText("1 Pilot withdrawn from "..currentAirbase.." "..inventories[k].PilotLives.." remain", 30)
 			--Fuel
 			inventories[k].Fuel = inventories[k].Fuel-myFuel
+			--DCS DEBUG
 			trigger.action.outText(myFuel.." kg of fuel withdrawn from "..currentAirbase.." "..inventories[k].Fuel.." kg remain", 30)
 			
 		end
@@ -209,6 +212,7 @@ function Inventory_Checkout(playerUnit, currentAirbase)
 				if(inventories[key].Airframes[Key].displayName == AirframeName) then
 					--trigger.action.outText("Airframes ding", 30)
 					inventories[key].Airframes[Key].quantity = inventories[key].Airframes[Key].quantity - 1
+					--DCS DEBUG
 					trigger.action.outText("1 Airframe of type "..AirframeName.." withdrawn from "..currentAirbase.." "..inventories[key].Airframes[Key].quantity.." remain", 30)
 					break
 					
@@ -243,6 +247,7 @@ function Inventory_Checkout(playerUnit, currentAirbase)
 						if(inventories[key].Weapons[Key].displayName == WeaponName) then
 							--trigger.action.outText("DING DING DING:", 30)
 							inventories[key].Weapons[Key].quantity = inventories[key].Weapons[Key].quantity - number
+							--DCS DEBUG
 							trigger.action.outText(number.." weapons of type "..WeaponName.." withdrawn "..inventories[key].Weapons[Key].quantity.." remain", 30)
 							break
 							
@@ -262,7 +267,7 @@ end
 function Inventory_Handoff(playerUnit, currentAirbase)
 	
 	--To do: include fuel, airframes and pilots.
-
+	--DCS DEBUG
 	trigger.action.outText("ITEMS DELIVERED:", 30)
 	
 	
@@ -281,9 +286,11 @@ function Inventory_Handoff(playerUnit, currentAirbase)
 		--PilotLives
 		
 			inventories[k].PilotLives = inventories[k].PilotLives + 1 -- Ways this can break: Multicrew
+			--DCS DEBUG
 			trigger.action.outText("1 Pilot transferred to "..currentAirbase.." "..inventories[k].PilotLives.." now in stock", 30)
 			--Fuel
 			inventories[k].Fuel = inventories[k].Fuel+myFuel
+			--DCS DEBUG
 			trigger.action.outText(myFuel.." kg of fuel transferred to "..currentAirbase.." "..inventories[k].Fuel.." kg now in stock", 30)
 			
 		end
@@ -303,6 +310,7 @@ function Inventory_Handoff(playerUnit, currentAirbase)
 				if(inventories[key].Airframes[Key].displayName == AirframeName) then
 					--trigger.action.outText("Airframes ding", 30)
 					inventories[key].Airframes[Key].quantity = inventories[key].Airframes[Key].quantity + 1
+					--DCS DEBUG
 					trigger.action.outText("1 Airframe of type "..AirframeName.." transferred to "..currentAirbase.." "..inventories[key].Airframes[Key].quantity.." now in stock", 30)
 					break
 					
@@ -342,6 +350,7 @@ function Inventory_Handoff(playerUnit, currentAirbase)
 						if(inventories[key].Weapons[Key].displayName == WeaponName) then
 							--trigger.action.outText("DING DING DING:", 30)
 							inventories[key].Weapons[Key].quantity = inventories[key].Weapons[Key].quantity + number
+							--DCS DEBUG
 							trigger.action.outText("There are now"..inventories[key].Weapons[Key].quantity.." "..WeaponName.." at "..currentAirbase, 30)
 							break
 							
@@ -370,7 +379,7 @@ function Inventory_Add_Weapon(WeaponName, InvAirbase, quantitytoAdd)
 				if(inventories[key].Weapons[Key].displayName == WeaponName) then
 
 					inventories[key].Weapons[Key].quantity = inventories[key].Weapons[Key].quantity + quantitytoAdd
-					
+					--DCS DEBUG
 					trigger.action.outText("There are now"..inventories[key].Weapons[Key].quantity.." "..WeaponName.." at "..InvAirbase, 30)
 					
 					break
@@ -394,7 +403,7 @@ function Inventory_Add_Fuel(InvAirbase, quantitytoAdd)
 		if(inventories[key].Airbase == InvAirbase) then				
 
 			inventories[key].Fuel = inventories[key].Fuel + quantitytoAdd
-			
+			--DCS DEBUG
 			trigger.action.outText("There is now"..inventories[key].Fuel.." kg of Fuel at"..InvAirbase, 30)
 					
 			break
@@ -409,13 +418,13 @@ end
 
 function Inventory_Add_Pilots(InvAirbase, quantitytoAdd)
 
-
 	for key, value in pairs(inventories) do
 	
 		if(inventories[key].Airbase == InvAirbase) then				
 
 			inventories[key].PilotLives = inventories[key].PilotLives + quantitytoAdd
 			
+			--DCS DEBUG
 			trigger.action.outText("There is now"..inventories[key].PilotLives.." kg of Fuel at"..InvAirbase, 30)
 					
 			break
@@ -720,7 +729,8 @@ end
 
 function init_tables_from_JSON() --load from a JSON file
 
-    trigger.action.outText("JSON read", 30)	
+	--DCS DEGUG: Confirm you are reading
+    --trigger.action.outText("JSON read", 30)	
 	
 	file = io.open(lfs.writedir().."\\Scripts\\Inventories System\\Inventory\\inventories_init.JSON", "r")
 	JSONString = file:read("*all") 
